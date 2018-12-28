@@ -15,22 +15,19 @@ class Game {
     }
 
     getRandomPhrase(){ // method
-        let random = Math.floor(Math.random() * this.phrases.length)
-        const objPhrase = this.phrases
-        .map(phrase => phrase.name)
+        let random = Math.floor(Math.random() * this.phrases.length) // random number
+        const objPhrase = this.phrases // store phrases array
+        .map(phrase => phrase.name) // access obj name
         //.reduce((arr, name)  => [...arr, ...name], []); // this might come in hand for storing each letter in its own array
-        return(objPhrase[random])
+        return(objPhrase[random])  // select a random phrase
     }
      startGame() {
-         $('#overlay').hide();
+         $('#overlay').hide(); // remove start screen
          
-        const gamePhrase = game.getRandomPhrase()
-        console.log('gameP' + gamePhrase)
-        game.phrase = new Phrase (gamePhrase);
-        game.phrase.addPhraseToDisplay()
-        this.activePhrase = gamePhrase
-        console.log('active' + this.activePhrase)
-        
+        const gamePhrase = game.getRandomPhrase() // holds random phrase
+        game.phrase = new Phrase (gamePhrase); // create new Phrase obj w/random phrase
+        game.phrase.addPhraseToDisplay() // displays to board
+        this.activePhrase = gamePhrase // holds same random phrase
      }
 }
 

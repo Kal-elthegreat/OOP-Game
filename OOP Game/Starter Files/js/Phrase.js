@@ -9,10 +9,10 @@
         this.phrase = phrase
      }
      addPhraseToDisplay(){ //method
-        const phraseDisplay = game.getRandomPhrase()
-        const spread = [...phraseDisplay]
+        const phraseDisplay = this.phrase 
+        const spread = [...phraseDisplay] // place phrase letters into individual arrays
         
-         spread.forEach(letter => {
+         spread.forEach(letter => { // creates li & adds letters to each one
             let li = document.createElement('LI')
             li.append(letter)
             $('#phrase ul').append(li) 
