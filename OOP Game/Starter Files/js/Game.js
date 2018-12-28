@@ -21,11 +21,14 @@ class Game {
         //.reduce((arr, name)  => [...arr, ...name], []); // this might come in hand for storing each letter in its own array
         return(objPhrase[random])
     }
-    //  storePhrase() {
+     startGame() {
+         $('#overlay').hide();
+         const gamePhrase = this.getRandomPhrase()
+         game.phrase = new Phrase (gamePhrase);
+         game.phrase.addPhraseToDisplay()
+         this.activePhrase = gamePhrase
         
-    //   return this.getRandomPhrase().split('')
-        
-    //  }
+     }
 }
 
 
