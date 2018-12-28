@@ -23,11 +23,13 @@ class Game {
     }
      startGame() {
          $('#overlay').hide();
-         const gamePhrase = this.getRandomPhrase()
-         game.phrase = new Phrase (gamePhrase);
-         game.phrase.addPhraseToDisplay()
-         this.activePhrase = this.getRandomPhrase();
-         console.log(this.activePhrase)
+         
+        const gamePhrase = game.getRandomPhrase()
+        console.log('gameP' + gamePhrase)
+        game.phrase = new Phrase (gamePhrase);
+        game.phrase.addPhraseToDisplay()
+        this.activePhrase = gamePhrase
+        console.log('active' + this.activePhrase)
         
      }
 }
