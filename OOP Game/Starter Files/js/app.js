@@ -11,7 +11,7 @@
 // });
 
 const game = new Game();
-game.getRandomPhrase().addPhraseToDisplay();
-console.log(game.getRandomPhrase())
-
+game.phrase = new Phrase (game.getRandomPhrase());
+game.phrase.addPhraseToDisplay()
+//game.getRandomPhrase().addPhraseToDisplay();
 //console.log(game.storePhrase());
