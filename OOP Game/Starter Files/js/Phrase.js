@@ -17,9 +17,9 @@
             li.append(letter)
             $('#phrase ul').append(li) 
             if(letter === ' '){
-                li.className = 'hide'
+                li.className = 'hide space'
             } else {
-                li.className = 'show'
+                li.className = 'hide letter'
             }
         });
         

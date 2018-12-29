@@ -5,12 +5,9 @@
 
  /* Create Game class & eventListeners for start button/ game buttons */
 
- //const game = new Game();
-// game.phrases.forEach((phrase, index) => {
-// console.log(`Phrase ${index} - phrase: ${phrase.name}`);
-// });
+let game;
 
-const game = new Game();
-
-//game.getRandomPhrase().addPhraseToDisplay();
-//console.log(game.storePhrase());
+$('#btn__reset').on('click', function() {
+    game = new Game;
+    game.startGame(); 
+})
