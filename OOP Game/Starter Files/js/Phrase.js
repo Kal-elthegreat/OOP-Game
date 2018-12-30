@@ -51,7 +51,7 @@
         const spread = [...this.phrase]
         spread.forEach(letter => {
             if(capturedKey == letter){
-              this.showMatchedLetter(capturedKey);
+              this.showMatchedLetter();
             } else {
                 return false;
             }
