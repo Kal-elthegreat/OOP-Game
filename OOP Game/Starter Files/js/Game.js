@@ -5,7 +5,7 @@
  /* create Game class methods for starting & ending game, handling
 interactions, getting random phrase, checking for win, & removing a life from the
 scoreboard. */
-
+let capturedKey;
 
 class Game {
     constructor (){
@@ -28,7 +28,19 @@ class Game {
         game.phrase = new Phrase (gamePhrase); // create new Phrase obj w/random phrase
         game.phrase.addPhraseToDisplay() // displays to board
         this.activePhrase = gamePhrase // holds same random phrase
+        this.handleInteraction(); // listen for clicked buttons
      }
+     
+    handleInteraction(){
+        $('button.key').click(function(event){
+             capturedKey = event.target.innerHTML;
+             return capturedKey
+            
+        })
+
+    }
+        
+
 }
 
 
