@@ -24,15 +24,7 @@
         });
         
      }
-    //  checkLetter(string){ //method
-    //     const phraseDisplay = this.phrase 
-    //     const spread = [...phraseDisplay]
-    //     spread.forEach(letter => {
-    //         if(capturedKey = letter){
-    //             console.log(letter)
-    //         }
-    //     })
-    //  }
+     
      showMatchedLetter(){ //method
         const spread = [...this.phrase]
         spread.forEach(letter => { 
@@ -47,14 +39,13 @@
         })
         
      }
-    checkLetter(string){ //method 
+    checkLetter(char){ //method 
         const spread = [...this.phrase]
-        spread.forEach(letter => {
-            if(capturedKey == letter){
-              this.showMatchedLetter();
-            } else {
-                return false;
-            }
+        spread.filter(letter => {
+            if(char == letter){
+              let isThere = true
+              return isThere;
+            } 
         })
      }
  }

@@ -29,17 +29,47 @@ class Game {
         game.phrase.addPhraseToDisplay() // displays to board
         this.activePhrase = gamePhrase // holds same random phrase
         this.handleInteraction(); // listen for clicked buttons
+        gameEnd = false;
      }
-     
+    
     handleInteraction(){
         $('button.key').on('click', function(){
-            game.phrase.checkLetter(capturedKey); // run check letter on each click
+            game.phrase.showMatchedLetter();
+            //game.phrase.checkLetter(capturedKey); // run check letter on each click
+            // if(game.phrase.checkLetter(capturedKey) == true){
+            //     game.phrase.showMatchedLetter();
+            // }
         })
-       
 
     }
-        
 
+    removeLife(){
+        this.missed += 1;
+        
+    }
+        
+    gameOver(){
+        if(gameWon == true){
+            $('#overlay h1').text(`You're a Winner`);
+            $('#overlay').removeClass('lose')
+            $('#overlay').addClass('win')
+        } else {
+            $('#overlay h1').text(`Sorry You Lose`);
+            $('#overlay').removeClass('win')
+            $('#overlay').addClass('lose')
+        }
+        $('#overlay').show()
+        
+        //reset game counter 
+        this.missed = 0
+
+        // resets li elements
+        $('#phrase ul').remove().children()
+        let newUL = document.createElement('UL')
+        $('#phrase').append(newUL);
+    
+
+    }
 }
 
 // which method holds this???
