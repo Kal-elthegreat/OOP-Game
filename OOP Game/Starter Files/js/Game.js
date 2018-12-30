@@ -32,15 +32,19 @@ class Game {
      }
      
     handleInteraction(){
-        $('button.key').click(function(event){
-             capturedKey = event.target.innerHTML;
-             return capturedKey
-            
+        $('button.key').on('click', function(){
+            game.phrase.checkLetter(capturedKey); // run check letter on each click
         })
+       
 
     }
         
 
 }
 
-
+// which method holds this???
+$('button.key').click(function(event){
+    capturedKey = event.target.innerHTML;
+    return capturedKey
+   
+})
