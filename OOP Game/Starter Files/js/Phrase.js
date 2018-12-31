@@ -44,7 +44,6 @@
         let letterMatch = false;
         this.phrase.split('')
         .forEach(letter => {
-            //console.log(letter)
             if(char === letter){
                 letterMatch = true;
             } 

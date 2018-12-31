@@ -5,7 +5,6 @@
  /* create Game class methods for starting & ending game, handling
 interactions, getting random phrase, checking for win, & removing a life from the
 scoreboard. */
-let capturedKey;
 
 class Game {
     constructor (){
@@ -29,16 +28,21 @@ class Game {
         game.phrase.addPhraseToDisplay() // displays to board
         this.activePhrase = gamePhrase // holds same random phrase
         this.handleInteraction(); // listen for clicked buttons
-        //gameEnd = false;
-        gameWon = false;
+        gameWon = false; // stays false until all letters guessed
      }
     
     handleInteraction(){
-        $('button.key').on('click', function(){
-            if(game.phrase.checkLetter(capturedKey) == true){
+        $('button.key').on('click', (event) => {
+            if(event.target.nodeName === 'BUTTON'){
+                event.target.disabled = true;
+                if(game.phrase.checkLetter(capturedKey) == true){
+                event.target.className = ('chosen')
                 game.phrase.showMatchedLetter();
-            } else {
+                game.checkForWin();
+                } else {
+                event.target.className = ('wrong')
                 game.removeLife();
+                }
             }
             
         })
@@ -46,14 +50,23 @@ class Game {
     }
 
     checkForWin(){
-        if( ){
+        const holdPhrase = game.activePhrase.split('')
+        const matchPhrase = holdPhrase.filter(letter => letter !== ' ')
+        const checkPhrase = [];
+        for (let i = 0; i < $('#phrase li.show.letter').length; i++){
+           checkPhrase.push($('#phrase li.show.letter')[i].textContent)
+        }
+        // console.log(matchPhrase)
+        // console.log(checkPhrase)
+       if(checkPhrase === matchPhrase){
+           console.log('game won')
             gameWon = true;
-            this.gameOver();
+           this.gameOver();
         }
     }
 
     removeLife(){
-        // loop through li img and change src on each wrong choice
+        // li img and change src on each wrong choice
         $('#scoreboard li img')[this.missed].src = 'images/lostHeart.png'
         this.missed += 1 // counter
         if(this.missed === 5){
@@ -74,22 +87,27 @@ class Game {
         }
         $('#overlay').show()
         
-        //reset game counter 
+        //reset game counter and lives
         this.missed = 0
+        for(let i = 0; i < $('#scoreboard li img').length; i++){
+            $('#scoreboard li img')[i].src ='images/liveHeart.png';
+        }
 
         // resets li elements
         $('#phrase ul').remove().children()
         let newUL = document.createElement('UL')
         $('#phrase').append(newUL);
-    
+
+        //reset button classes
+        $('.keyrow button').removeClass('chosen')
+        $('.keyrow button').removeClass('wrong')
+        $('.keyrow button').addClass('key')
+        // enable all buttons
+        for(let i = 0; i < $('.keyrow button').length; i++){
+            $('.keyrow button')[i].disabled = false;
+        }
+        
 
     }
 }
-
-// which method holds this???
-$('button.key').click(function(event){
-    capturedKey = event.target.innerHTML;
-    return capturedKey
-   
-})
 
