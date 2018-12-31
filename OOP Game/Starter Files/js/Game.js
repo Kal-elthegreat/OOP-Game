@@ -63,8 +63,10 @@ class Game {
 
     removeLife(){
         // li img and change src on each wrong choice
+        console.log(this.missed)
         $('#scoreboard li img')[this.missed].src = 'images/lostHeart.png'
-        this.missed + 1 // counter
+        this.missed  += 1 // counter
+        console.log(this.missed)
         if(this.missed === 5){
         this.gameOver();
         }
@@ -72,6 +74,7 @@ class Game {
     }
         
     gameOver(){
+        console.log(this.missed)
         if(gameWon == true){
             $('#overlay h1').text(`You're a Winner`);
             $('#overlay').removeClass('lose')
