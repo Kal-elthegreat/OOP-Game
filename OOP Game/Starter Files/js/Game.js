@@ -29,22 +29,36 @@ class Game {
         game.phrase.addPhraseToDisplay() // displays to board
         this.activePhrase = gamePhrase // holds same random phrase
         this.handleInteraction(); // listen for clicked buttons
-        gameEnd = false;
+        //gameEnd = false;
+        gameWon = false;
      }
     
     handleInteraction(){
         $('button.key').on('click', function(){
-            game.phrase.showMatchedLetter();
-            //game.phrase.checkLetter(capturedKey); // run check letter on each click
-            // if(game.phrase.checkLetter(capturedKey) == true){
-            //     game.phrase.showMatchedLetter();
-            // }
+            if(game.phrase.checkLetter(capturedKey) == true){
+                game.phrase.showMatchedLetter();
+            } else {
+                game.removeLife();
+            }
+            
         })
 
     }
 
+    checkForWin(){
+        if( ){
+            gameWon = true;
+            this.gameOver();
+        }
+    }
+
     removeLife(){
-        this.missed += 1;
+        // loop through li img and change src on each wrong choice
+        $('#scoreboard li img')[this.missed].src = 'images/lostHeart.png'
+        this.missed += 1 // counter
+        if(this.missed === 5){
+        this.gameOver();
+        }
         
     }
         
@@ -78,3 +92,4 @@ $('button.key').click(function(event){
     return capturedKey
    
 })
+

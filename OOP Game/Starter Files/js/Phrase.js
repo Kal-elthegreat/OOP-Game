@@ -39,15 +39,19 @@
         })
         
      }
+
     checkLetter(char){ //method 
-        const spread = [...this.phrase]
-        spread.filter(letter => {
-            if(char == letter){
-              let isThere = true
-              return isThere;
+        let letterMatch = false;
+        this.phrase.split('')
+        .forEach(letter => {
+            //console.log(letter)
+            if(char === letter){
+                letterMatch = true;
             } 
         })
+         return letterMatch;   
      }
+
  }
 
  

@@ -7,7 +7,7 @@
 
 let game;
 let gameEnd;
-let gameWon = false;
+let gameWon;
 
 $('#btn__reset').on('click', function() {
     game = new Game;
