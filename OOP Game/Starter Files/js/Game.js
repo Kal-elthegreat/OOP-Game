@@ -72,7 +72,6 @@ class Game {
     }
         
     gameOver(){
-        console.log(this.missed)
         if(gameWon == true){
             $('#overlay h1').text(`You're a Winner`);
             $('#overlay').removeClass('lose')
