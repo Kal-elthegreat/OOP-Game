@@ -29,13 +29,15 @@ class Game {
         this.activePhrase = gamePhrase // holds same random phrase
         this.handleInteraction(); // listen for clicked buttons
         gameWon = false; // stays false until all letters guessed
+        
      }
     
     handleInteraction(){
         $('button.key').on('click', (event) => {
             if(event.target.nodeName === 'BUTTON'){
                 event.target.disabled = true;
-                if(game.phrase.checkLetter(capturedKey) == true){
+            }
+            if(game.phrase.checkLetter(capturedKey) == true){
                 event.target.className = ('chosen')
                 game.phrase.showMatchedLetter();
                 game.checkForWin();
@@ -43,32 +45,26 @@ class Game {
                 event.target.className = ('wrong')
                 game.removeLife();
                 }
-            }
-            
         })
 
     }
 
     checkForWin(){
-        const holdPhrase = game.activePhrase.split('')
-        const matchPhrase = holdPhrase.filter(letter => letter !== ' ')
-        const checkPhrase = [];
-        for (let i = 0; i < $('#phrase li.show.letter').length; i++){
-           checkPhrase.push($('#phrase li.show.letter')[i].textContent)
+    // see if li .letter = li.show
+        let checkTrue = false
+        if($('#phrase li.letter').length == $('#phrase li.show').length){
+            checkTrue = true;
         }
-        // console.log(matchPhrase)
-        // console.log(checkPhrase)
-       if(checkPhrase === matchPhrase){
-           console.log('game won')
+        if(checkTrue){
             gameWon = true;
-           this.gameOver();
+            this.gameOver();
         }
     }
 
     removeLife(){
         // li img and change src on each wrong choice
         $('#scoreboard li img')[this.missed].src = 'images/lostHeart.png'
-        this.missed += 1 // counter
+        this.missed + 1 // counter
         if(this.missed === 5){
         this.gameOver();
         }
@@ -76,6 +72,7 @@ class Game {
     }
         
     gameOver(){
+        console.log(this.missed)
         if(gameWon == true){
             $('#overlay h1').text(`You're a Winner`);
             $('#overlay').removeClass('lose')
@@ -86,9 +83,8 @@ class Game {
             $('#overlay').addClass('lose')
         }
         $('#overlay').show()
-        
+        //
         //reset game counter and lives
-        this.missed = 0
         for(let i = 0; i < $('#scoreboard li img').length; i++){
             $('#scoreboard li img')[i].src ='images/liveHeart.png';
         }
