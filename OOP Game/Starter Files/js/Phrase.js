@@ -28,7 +28,7 @@
      showMatchedLetter(){ //method
         const spread = [...this.phrase]
         spread.forEach(letter => { 
-            if(capturedKey == letter){
+            if(capturedKey.innerHTML == letter){
                 let phraseLetters = document.querySelectorAll('#phrase li')
                 for(let i = 0; i < phraseLetters.length;i++){ // through text content to show match
                     if(phraseLetters[i].textContent == letter){

@@ -17,7 +17,6 @@ class Game {
         let random = Math.floor(Math.random() * this.phrases.length) // random number
         const objPhrase = this.phrases // store phrases array
         .map(phrase => phrase.name) // access obj name
-        //.reduce((arr, name)  => [...arr, ...name], []); // this might come in hand for storing each letter in its own array
         return(objPhrase[random])  // select a random phrase
     }
      startGame() {
@@ -27,26 +26,21 @@ class Game {
         game.phrase = new Phrase (gamePhrase); // create new Phrase obj w/random phrase
         game.phrase.addPhraseToDisplay() // displays to board
         this.activePhrase = gamePhrase // holds same random phrase
-        this.handleInteraction(); // listen for clicked buttons
-        gameWon = false; // stays false until all letters guessed
-        
+        gameWon = false; // stays false until all letters guessed     
      }
     
     handleInteraction(){
-        $('button.key').on('click', (event) => {
-            if(event.target.nodeName === 'BUTTON'){
-                event.target.disabled = true;
+            if(capturedKey.tagName === 'BUTTON'){
+                capturedKey.disabled = true;
             }
-            if(game.phrase.checkLetter(capturedKey) == true){
-                event.target.className = ('chosen')
+            if(game.phrase.checkLetter(capturedKey.innerHTML) == true){ 
+                capturedKey.className = ('chosen')
                 game.phrase.showMatchedLetter();
                 game.checkForWin();
-                } else {
-                event.target.className = ('wrong')
+                } else if(game.phrase.checkLetter(capturedKey.innerHTML) == false){
+                capturedKey.className = ('wrong')
                 game.removeLife();
                 }
-        })
-
     }
 
     checkForWin(){
@@ -63,10 +57,8 @@ class Game {
 
     removeLife(){
         // li img and change src on each wrong choice
-        console.log(this.missed)
         $('#scoreboard li img')[this.missed].src = 'images/lostHeart.png'
         this.missed  += 1 // counter
-        console.log(this.missed)
         if(this.missed === 5){
         this.gameOver();
         }
@@ -104,8 +96,6 @@ class Game {
         for(let i = 0; i < $('.keyrow button').length; i++){
             $('.keyrow button')[i].disabled = false;
         }
-        
 
     }
 }
-

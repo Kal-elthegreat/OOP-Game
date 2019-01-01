@@ -9,13 +9,17 @@ let game;
 let gameWon;
 let capturedKey;
 
-$('#btn__reset').on('click', function() {
+$('#btn__reset').on('click', (event) => {
     game = new Game;
-    game.startGame(); 
+    game.startGame();
 })
 $('button.key').click(function(event){
-    capturedKey = event.target.innerHTML;
+    capturedKey = event.target;
     return capturedKey
    
 })
+$('button.key').click( () => {
+    game.handleInteraction(); // apply all game logic
+})
+
 
