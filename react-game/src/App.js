@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import GameDisplay from './components/GameDisplay.js';
+import GameDisplay from './components/GameDisplay';
 
 function App() {
   return (

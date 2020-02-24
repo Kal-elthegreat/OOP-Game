@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
-import Overlay from './Overlay.js';
-import Banner from './Banner.js';
-import Phrase from './Phrase.js';
-import Keyboard from './Keyboard.js';
-import Scoreboard from './Scoreboard.js';
+import Overlay from './Overlay';
+import Banner from './Banner';
+import Phrase from './Phrase';
+import Keyboard from './Keyboard';
+import Scoreboard from './Scoreboard';
 
 const GameDisplay = () => {
     return (
