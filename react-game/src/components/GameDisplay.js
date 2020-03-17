@@ -20,20 +20,21 @@ const GameDisplay = () => {
 
     const handleKey = (e) => {
         if(e.target.className === 'key'){
-        keyVal = e.target.innerHTML;
+        keyVal = e.target;
         }
         chosenLetter(keyVal)
         
     }
+    const listedPhrase = document.getElementsByClassName('letter');
     const chosenLetter = (val) => {
         if(val !== undefined) {
-            [...selectedPhrase].map(letter => {
-                if (letter === val) {
-                // change the class to show 
-                // make key unclickable - good
+            [...listedPhrase].map(letter => {
+                if (letter.innerHTML === val.innerHTML) {
+                    letter.className = 'show';
+                    //val.className = 'chosen' <- can't be done here because it shouldn't be in the loop
                 } else {
                     //remove life
-                    //make key unclickable- bad
+                    //val.className = 'wrong' <-- same applies
                 }
             })
         }
