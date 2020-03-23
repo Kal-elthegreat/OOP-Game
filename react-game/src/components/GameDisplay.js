@@ -6,35 +6,22 @@ import Keyboard from './Keyboard';
 import Scoreboard from './Scoreboard';
 
 const GameDisplay = () => {
-    let keyVal;
-
-    const randomPhrase = () => {
-        var phrases = [{ name: 'prestige worldwide' }, { name: 'jack jack has powers' }, { name: 'javascript is life' }, { name: 'to infinity and beyond' }, { name: 'just keep swimming' }];
-        var random = Math.floor(Math.random() * phrases.length);
-        var getRandom = phrases[random].name;
-        return (
-            getRandom
-        )
-    }
-    var selectedPhrase = randomPhrase();
-
+    
     const handleKey = (e) => {
         if(e.target.className === 'key'){
-        keyVal = e.target;
-        }
-        chosenLetter(keyVal)
-        
+            let keyVal = e.target;
+            checkLetter(keyVal);
+        }         
     }
-    const listedPhrase = document.getElementsByClassName('letter');
-    const chosenLetter = (val) => {
-        if(val !== undefined) {
+
+    const checkLetter = (button) => {
+        var listedPhrase = document.getElementsByClassName('letter');
+        if(button !== undefined) {
             [...listedPhrase].map(letter => {
-                if (letter.innerHTML === val.innerHTML) {
+                if (letter.innerHTML === button.innerHTML) {
                     letter.className = 'show';
-                    //val.className = 'chosen' <- can't be done here because it shouldn't be in the loop
-                } else {
-                    //remove life
-                    //val.className = 'wrong' <-- same applies
+                    button.className = 'chosen';
+                    button.disabled = true;
                 }
             })
         }
@@ -44,8 +31,8 @@ const GameDisplay = () => {
         <Fragment>
             <Overlay />
             <Banner />
-            <Phrase randomPhrase={selectedPhrase}/>
-            <Keyboard handleKey={handleKey} onClick={chosenLetter}/>
+            <Phrase />
+            <Keyboard handleKey={handleKey} onClick={checkLetter}/>
             <Scoreboard />
         </Fragment> 
     )
