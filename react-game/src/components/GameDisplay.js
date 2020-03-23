@@ -5,13 +5,18 @@ import Phrase from './Phrase';
 import Keyboard from './Keyboard';
 import Scoreboard from './Scoreboard';
 
-// const reducer = (state,action) => {
-
-// }
+const reducer = (state, action) => {
+    switch (action.type) {
+        case 'wrong' :
+            return state - 1;
+        default:
+            return state;
+    }
+}
 
 const GameDisplay = () => {
-    
-    // const [key,dispatch] = useReducer(reducer, null);
+    let livesRemaining = 5
+    const [lives, dispatch] = useReducer(reducer, livesRemaining);
 
     const handleKey = (e) => {
         if(e.target.className === 'key'){
@@ -33,7 +38,9 @@ const GameDisplay = () => {
             if(isMatch) {
                 button.className = 'chosen';
             } else {
-                button.className = 'wrong'
+                button.className = 'wrong';
+                dispatch({ type: 'wrong' });
+                // will need a func to check if lives has hit 0 to see if game lost
             }
             button.disabled = true;
         }
@@ -45,7 +52,7 @@ const GameDisplay = () => {
             <Banner />
             <Phrase />
             <Keyboard handleKey={handleKey} onClick={checkLetter}/>
-            <Scoreboard />
+            <Scoreboard/>
         </Fragment> 
     )
 }
