@@ -1,12 +1,18 @@
 import React from 'react';
 import './App.css';
 
-import GameDisplay from './components/GameDisplay';
+import Overlay from './components/Overlay';
+import Banner from './components/Banner';
+import Phrase from './components/Phrase';
+import GameLogic from './components/GameLogic';
 
 function App() {
   return (
     <div className="main-container">
-      <GameDisplay/>
+      <Overlay/>
+      <Banner/>
+      <Phrase/>
+      <GameLogic/>
     </div>  
   );
 }

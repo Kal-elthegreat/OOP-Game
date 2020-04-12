@@ -1,22 +1,12 @@
-import React, { useReducer,Fragment } from 'react';
-import Overlay from './Overlay';
-import Banner from './Banner';
-import Phrase from './Phrase';
+import React, {Fragment} from 'react';
+import { useState } from "react";
 import Keyboard from './Keyboard';
 import Scoreboard from './Scoreboard';
 
-const reducer = (state, action) => {
-    switch (action.type) {
-        case 'wrong' :
-            return state - 1;
-        default:
-            return state;
-    }
-}
 
 const GameDisplay = () => {
-    let livesRemaining = 5
-    const [lives, dispatch] = useReducer(reducer, livesRemaining);
+
+    ;const [lives, setLives] = useState(5);
 
     const handleKey = (e) => {
         if(e.target.className === 'key'){
@@ -39,7 +29,7 @@ const GameDisplay = () => {
                 button.className = 'chosen';
             } else {
                 button.className = 'wrong';
-                dispatch({ type: 'wrong' });
+                setLives(lives - 1);
                 // will need a func to check if lives has hit 0 to see if game lost
             }
             button.disabled = true;
@@ -48,11 +38,8 @@ const GameDisplay = () => {
 
     return (
         <Fragment>
-            <Overlay />
-            <Banner />
-            <Phrase />
             <Keyboard handleKey={handleKey} onClick={checkLetter}/>
-            <Scoreboard/>
+            <Scoreboard lives = {lives}/>
         </Fragment> 
     )
 }
