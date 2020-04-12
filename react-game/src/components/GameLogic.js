@@ -4,7 +4,7 @@ import Keyboard from './Keyboard';
 import Scoreboard from './Scoreboard';
 
 
-const GameDisplay = () => {
+const GameLogic = () => {
 
     ;const [lives, setLives] = useState(5);
 
@@ -44,4 +44,4 @@ const GameDisplay = () => {
     )
 }
 
-export default GameDisplay;
+export default GameLogic;
