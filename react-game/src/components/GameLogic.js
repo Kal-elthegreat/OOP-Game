@@ -6,7 +6,7 @@ import Scoreboard from './Scoreboard';
 
 const GameLogic = () => {
 
-    ;const [lives, setLives] = useState(5);
+    const [lives, setLives] = useState(5);
 
     const handleKey = (e) => {
         if(e.target.className === 'key'){

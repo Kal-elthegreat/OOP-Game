@@ -1,19 +1,19 @@
 import React from 'react';
 
-const Overlay = () => {
-    const startGame = () => {
+const StartGame = () => {
+    const start = () => {
         let display = document.getElementById('overlay');
         display.style.display = 'none';
     }
     return (
         <div id="overlay" className="start">
             <h2 className="title">Phrase Hunter</h2>
-            {/* <h1 id="game-over-message"></h1> */}
+            {/* <h1 id="game-over-message"></h1>  */}
             <button 
             id="btn__reset"
-            onClick = {startGame}>Start Game</button>
+            onClick = {start}>Start Game</button>
         </div>
     );  
 }
 
-export default Overlay;
+export default StartGame;

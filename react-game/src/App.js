@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import Overlay from './components/Overlay';
+import StartGame from './components/StartGame';
 import Banner from './components/Banner';
 import Phrase from './components/Phrase';
 import GameLogic from './components/GameLogic';
@@ -9,7 +9,7 @@ import GameLogic from './components/GameLogic';
 function App() {
   return (
     <div className="main-container">
-      <Overlay/>
+      <StartGame/>
       <Banner/>
       <Phrase/>
       <GameLogic/>
