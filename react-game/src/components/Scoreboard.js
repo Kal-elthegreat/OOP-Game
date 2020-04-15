@@ -1,16 +1,14 @@
 import  React from 'react';
-import { useState } from 'react';
 import lifeHeart from '../images/liveHeart.png';
 import lostHeart from '../images/lostHeart.png';
 
 
 const Scoreboard = (props) => {
     let totalHearts = [];
-    const heartImgs = {lifeHeart, lostHeart};
-    const [alive, setAlive] = useState(heartImgs.lifeHeart); 
+    const heartImgs = {lifeHeart, lostHeart}; 
     
     const Heart = () => {
-        return <li className="tries"><img src={alive} alt="Heart Icon" height="35" width="30" /></li>
+        return <li className="tries"><img src={heartImgs.lifeHeart} alt="Heart Icon" height="35" width="30" /></li>
     }
     const heartsArr = num =>{
         for(let i = 0; i < num; i++){

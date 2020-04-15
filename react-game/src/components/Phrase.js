@@ -20,3 +20,4 @@ Phrase.propTypes = {
 }
 
 export default Phrase;
+export const PhraseContext = React.createContext(Phrase.getRandom);
