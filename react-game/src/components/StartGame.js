@@ -8,10 +8,10 @@ const StartGame = () => {
     return (
         <div id="overlay" className="start">
             <h2 className="title">Phrase Hunter</h2>
-            {/* <h1 id="game-over-message"></h1>  */}
             <button 
             id="btn__reset"
             onClick = {start}>Start Game</button>
+           
         </div>
     );  
 }

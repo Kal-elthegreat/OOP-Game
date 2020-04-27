@@ -86,7 +86,7 @@ button {
 /* Title */
 
 .header {
-  color: #3a3f58;
+  color: #09d4b9;
 }
 
 
@@ -111,7 +111,7 @@ button {
 
 .show {
   color: #fff;
-  background-color: #4ac0d5;
+  background-color: #09d4b9;
   font-size: 20px;
   height: 65px;
   width: 65px;
@@ -180,7 +180,7 @@ button {
 }
 
 .start {
-  background-color: #3a3f58;
+  background-color: #09d4b9;
 }
 
 .start a {
@@ -201,4 +201,7 @@ button {
 
 .lose a {
   color: var(--color-lose);
+}
+button.audio {
+  width : fit-content;
 }

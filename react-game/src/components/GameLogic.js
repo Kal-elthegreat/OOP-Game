@@ -39,7 +39,6 @@ const [isWon ,setIsWon] = useState(false);
 
       button.disabled = true;
     }
-    console.log(isWon);
   };
   
   if (lives === 0 || isWon === true) {
