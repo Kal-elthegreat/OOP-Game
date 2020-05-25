@@ -1,10 +1,11 @@
 import React from 'react';
 
 
-const Keyboard = () => {
+const Keyboard = (props) => {
+
     return (
         <div id="qwerty" className="section">
-            <div className="keyrow">
+            <div className="keyrow" onClick={props.handleKey}>
                 <button className="key">q</button>
                 <button className="key">w</button>
                 <button className="key">e</button>
@@ -17,7 +18,7 @@ const Keyboard = () => {
                 <button className="key">p</button>
             </div>
 
-            <div className="keyrow">
+            <div className="keyrow" onClick={props.handleKey}>
                 <button className="key">a</button>
                 <button className="key">s</button>
                 <button className="key">d</button>
@@ -29,7 +30,7 @@ const Keyboard = () => {
                 <button className="key">l</button>
             </div>
 
-            <div className="keyrow">
+            <div className="keyrow" onClick={props.handleKey}>
                 <button className="key">z</button>
                 <button className="key">x</button>
                 <button className="key">c</button>
