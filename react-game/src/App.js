@@ -5,7 +5,7 @@ import StartGame from './components/StartGame';
 import Banner from './components/Banner';
 import Phrase from './components/Phrase';
 import GameLogic from './components/GameLogic';
-import Music from './components/Music';
+// import Music from './components/Music'; not working properly 
 
 function App() {
   return (
@@ -14,7 +14,6 @@ function App() {
       <Banner />
       <Phrase />
       <GameLogic />
-      <Music />
     </div>
   );
 }
